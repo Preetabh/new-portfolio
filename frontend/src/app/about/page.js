@@ -1,0 +1,12 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+export default function AboutPage() {
+  useEffect(() => {
+    window.location.href = "/#about";
+  }, []);
+
+  return null;
+}
