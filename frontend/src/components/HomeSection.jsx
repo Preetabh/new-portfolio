@@ -43,7 +43,7 @@ export default function HomeSection() {
             <div className="w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[390px] md:h-[390px] rounded-[40px] border border-[#106ee062] bg-gradient-to-br from-[#d0d2d4a1] via-[#fafbf962] to-[#106ee062] p-2 shadow-[0_0_80px_rgba(250,204,21,0.35)] relative backdrop-blur-xl">
               <div className="w-full h-full rounded-[32px] bg-[#111] flex items-center justify-center overflow-hidden">
                 <Image
-                  src="/homesection2.png"
+                  src="/homesection3.webp"
                   width={400}
                   height={400}
                   alt="profile"
