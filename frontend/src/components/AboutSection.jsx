@@ -6,7 +6,7 @@ export default function AboutSection() {
       <div className="max-w-7xl  px-4  mx-auto">
         <div className="flex justify-center mb-20">
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-center leading-tight">
-            Who I am🤔
+            Who I am 🤔
           </h1>
         </div>
 
