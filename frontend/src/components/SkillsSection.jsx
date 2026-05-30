@@ -3,65 +3,65 @@ import Image from "next/image";
 const languageSkills = [
   {
     name: "JavaScript",
-    image: "https://cdn.simpleicons.org/javascript",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg",
   },
   {
     name: "C++",
-    image: "https://cdn.simpleicons.org/cplusplus",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cplusplus.svg",
   },
 ];
 
 const webDevSkills = [
   {
     name: "HTML",
-    image: "https://cdn.simpleicons.org/html5",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/html5.svg",
   },
   {
     name: "CSS",
-    image: "https://cdn.simpleicons.org/css",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/css.svg",
   },
   {
     name: "React",
-    image: "https://cdn.simpleicons.org/react",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/react.svg",
   },
   {
     name: "Next.js",
-    image: "https://cdn.simpleicons.org/nextdotjs",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nextdotjs.svg",
   },
   {
     name: "Node.js",
-    image: "https://cdn.simpleicons.org/nodedotjs",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nodedotjs.svg",
   },
   {
     name: "Express",
-    image: "https://cdn.simpleicons.org/express",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/express.svg",
   },
   {
     name: "MongoDB",
-    image: "https://cdn.simpleicons.org/mongodb",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mongodb.svg",
   },
   {
     name: "PostgreSQL",
-    image: "https://cdn.simpleicons.org/postgresql",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/postgresql.svg",
   },
   {
     name: "SQL",
-    image: "https://cdn.simpleicons.org/mysql",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mysql.svg",
   },
   {
     name: "WebRTC",
-    image: "https://cdn.simpleicons.org/webrtc",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/webrtc.svg",
   },
 ];
 
 const toolSkills = [
   {
     name: "Git",
-    image: "https://cdn.simpleicons.org/git",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/git.svg",
   },
   {
     name: "GitHub",
-    image: "https://cdn.simpleicons.org/github",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg",
   },
   {
     name: "VS Code",
@@ -69,15 +69,15 @@ const toolSkills = [
   },
   {
     name: "Prisma",
-    image: "https://cdn.simpleicons.org/prisma",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/prisma.svg",
   },
   {
     name: "Socket.IO",
-    image: "https://cdn.simpleicons.org/socketdotio",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/socketdotio.svg",
   },
   {
     name: "npm",
-    image: "https://cdn.simpleicons.org/nodedotjs",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nodedotjs.svg",
   },
 ];
 
