@@ -66,28 +66,20 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="relative overflow-hidden py-24 px-4 sm:px-6 bg-transparent transition-all duration-300">
+    <section className="relative overflow-hidden py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-transparent transition-all duration-300">
       <div className="absolute top-20 left-10 w-44 h-44 rounded-full bg-blue-500/10 blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-52 h-52 rounded-full bg-pink-500/10 blur-3xl"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-14 items-center">
+      <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
         <div>
-          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 text-sm font-medium mb-6">
-            ✨ Contact Me
-          </span>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-8">
-            Let’s Work
-            <span className="gradient-text"> Together</span>
-          </h2>
+           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center lg:text-left leading-tight mb-8 md:mb-12">
+              Contact Me
+          </h1>
 
-          <p className="text-base sm:text-lg leading-8 opacity-80 mb-12 max-w-xl">
-            Have a project idea or want to collaborate? Feel free to contact me.
-            I’m always open to discussing modern projects and creative ideas.
-          </p>
 
-          <div className="space-y-6">
-            <div className="glass-card rounded-[28px] p-6 flex items-start gap-5 hover:-translate-y-1 transition-all duration-300">
+          <div className="space-y-4 md:space-y-6">
+            <div className="glass-card rounded-[28px] p-5 md:p-6 flex items-start gap-4 md:gap-5 hover:-translate-y-1 transition-all duration-300">
               <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center border border-blue-400/20">
                 <Mail className="w-6 h-6" />
               </div>
@@ -98,7 +90,7 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="glass-card rounded-[28px] p-6 flex items-start gap-5 hover:-translate-y-1 transition-all duration-300">
+            <div className="glass-card rounded-[28px] p-5 md:p-6 flex items-start gap-4 md:gap-5 hover:-translate-y-1 transition-all duration-300">
               <div className="w-14 h-14 rounded-2xl bg-pink-500/10 flex items-center justify-center border border-pink-400/20">
                 <MapPin className="w-6 h-6" />
               </div>
@@ -109,7 +101,7 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="glass-card rounded-[28px] p-6 flex items-start gap-5 hover:-translate-y-1 transition-all duration-300">
+            <div className="glass-card rounded-[28px] p-5 md:p-6 flex items-start gap-4 md:gap-5 hover:-translate-y-1 transition-all duration-300">
               <div className="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center border border-purple-400/20">
                 <Phone className="w-6 h-6" />
               </div>
@@ -122,7 +114,7 @@ export default function ContactSection() {
           </div>
         </div>
 
-        <div className="glass-card rounded-[36px] p-7 sm:p-10 shadow-[0_10px_50px_rgba(0,0,0,0.18)] backdrop-blur-2xl border border-white/10">
+        <div className="glass-card rounded-[28px] md:rounded-[36px] p-5 sm:p-7 md:p-10 shadow-[0_10px_50px_rgba(0,0,0,0.18)] backdrop-blur-2xl border border-white/10">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
               <MessageCircle className="w-6 h-6 text-white" />
@@ -136,7 +128,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
             <div>
               <label className="block mb-3 font-medium">Full Name</label>
 
@@ -191,7 +183,7 @@ export default function ContactSection() {
 
             <button
               type="submit"
-              className="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 font-semibold flex items-center justify-center gap-3 hover:scale-[1.02] transition-all duration-300 shadow-xl"
+              className="w-full py-3.5 md:py-4 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 font-semibold flex items-center justify-center gap-3 hover:scale-[1.02] transition-all duration-300 shadow-xl"
             >
               <Send className="w-5 h-5" />
               {loading ? "Sending..." : "Send Message"}

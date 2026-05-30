@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "../context/ThemeContext";
@@ -8,6 +8,7 @@ import { useTheme } from "../context/ThemeContext";
 export default function Navbar() {
   const { theme, toggleTheme, mounted } = useTheme();
   const [activeSection, setActiveSection] = useState("#home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isDark = theme === "dark";
 
   useEffect(() => {
@@ -54,7 +55,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-10 py-3 bg-white/75 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/70 dark:border-slate-800/70 transition-colors duration-300">
+    <nav className="fixed top-0 left-0 w-full z-50 px-2 md:px-10 py-3 backdrop-blur-xl border-b border-slate-200/70 dark:border-slate-800/70 transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold italic text-slate-900 dark:text-white transition-colors duration-300">
@@ -142,6 +143,13 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white flex items-center justify-center transition-all duration-300"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+          <button
             onClick={toggleTheme}
             className="w-12 h-12 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 text-white flex items-center justify-center shadow-lg hover:scale-105 transition-all duration-300"
             aria-label="Toggle theme"
@@ -161,6 +169,65 @@ export default function Navbar() {
             href="/resume/Preetabh_Awasthi_Resume.pdf"
             download="Preetabh_Awasthi_Resume.pdf"
             className="hidden md:inline-flex px-6 py-3 rounded-2xl bg-gradient-to-r from-pink-400 to-purple-700 text-white font-semibold shadow-lg hover:scale-105 transition-all duration-300 hover:bg-gradient-to-r hover:from-pink-500 hover:via-yellow-400 hover:to-pink-500"
+          >
+            Download CV
+          </a>
+        </div>
+      </div>
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          isMenuOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-4 flex flex-col gap-3 shadow-xl">
+          <Link
+            href="/#home"
+            onClick={() => {
+              setActiveSection("#home");
+              setIsMenuOpen(false);
+            }}
+            className="px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900 transition-all"
+          >
+            Home
+          </Link>
+
+          <Link
+            href="/#about"
+            onClick={() => {
+              setActiveSection("#about");
+              setIsMenuOpen(false);
+            }}
+            className="px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900 transition-all"
+          >
+            About
+          </Link>
+
+          <Link
+            href="/#projects"
+            onClick={() => {
+              setActiveSection("#projects");
+              setIsMenuOpen(false);
+            }}
+            className="px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900 transition-all"
+          >
+            Projects
+          </Link>
+
+          <Link
+            href="/#contact"
+            onClick={() => {
+              setActiveSection("#contact");
+              setIsMenuOpen(false);
+            }}
+            className="px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900 transition-all"
+          >
+            Contact Us
+          </Link>
+
+          <a
+            href="/resume/Preetabh_Awasthi_Resume.pdf"
+            download="Preetabh_Awasthi_Resume.pdf"
+            className="text-center px-4 py-3 rounded-xl bg-gradient-to-r from-pink-400 to-purple-700 text-white font-semibold"
           >
             Download CV
           </a>
