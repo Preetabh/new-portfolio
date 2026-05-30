@@ -58,7 +58,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full z-50 px-2 md:px-10 py-3 backdrop-blur-xl border-b border-slate-200/70 dark:border-slate-800/70 transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold italic text-slate-900 dark:text-white transition-colors duration-300">
+          <h1 className="text-3xl font-bold italic  transition-colors duration-300">
             Preetabh
           </h1>
         </div>
