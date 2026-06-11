@@ -8,22 +8,18 @@ dotenv.config();
 // =========================
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  family: 4,
-  requireTLS: true,
+  service: "gmail",
   auth: {
     user: process.env.NODEMAILER_EMAIL,
     pass: process.env.NODEMAILER_PASSWORD,
   },
 });
 
-transporter.verify((error, success) => {
+transporter.verify((error) => {
   if (error) {
     console.error("❌ SMTP Verification Failed:", error);
   } else {
-    console.log("✅ SMTP Server Ready");
+    console.log("✅ Gmail SMTP Connected Successfully");
   }
 });
 
