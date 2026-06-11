@@ -14,7 +14,7 @@ export default function FooterSection() {
           </a>
 
           <a
-            href="https://github.com/vishubbk"
+            href="https://github.com/Preetabh"
             target="_blank"
             className="text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white text-2xl transition-colors duration-300"
           >
