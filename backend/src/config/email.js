@@ -11,10 +11,20 @@ const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
   secure: false,
+  family: 4,
+  requireTLS: true,
   auth: {
     user: process.env.NODEMAILER_EMAIL,
     pass: process.env.NODEMAILER_PASSWORD,
   },
+});
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ SMTP Verification Failed:", error);
+  } else {
+    console.log("✅ SMTP Server Ready");
+  }
 });
 
 // =========================
@@ -40,6 +50,7 @@ const SendEmail = async ({
       contact,
       message,
     }); // Debugging line
+    console.log("📧 Using sender:", process.env.NODEMAILER_EMAIL);
     const htmlTemplate = `
       <div style="font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4;">
         <div style="max-width: 600px; margin: auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
@@ -133,7 +144,7 @@ const SendEmail = async ({
 
     return adminMail;
   } catch (error) {
-    console.error("❌ Error sending email:", error.message);
+    console.error("❌ Error sending email:", error);
     throw new Error("Email sending failed");
   }
 };
