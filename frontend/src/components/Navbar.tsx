@@ -36,9 +36,12 @@ export default function Navbar() {
   };
 
   const handleDownloadCV = () => {
-    toast.success(`Thanks for your interest! Reach out at ${personal.email} for my full resume.`, {
-      duration: 4000,
-    });
+    const link = document.createElement("a");
+    link.href = "/preetabh resume.pdf";
+    link.download = "preetabh resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
