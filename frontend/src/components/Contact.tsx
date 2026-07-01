@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import axios from "axios";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import {
@@ -26,18 +27,45 @@ export default function Contact() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
     if (!form.name || !form.email || !form.message) {
       toast.error("Please fill in all required fields.");
       return;
     }
+
     setLoading(true);
-    setTimeout(() => {
+
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1`,
+        {
+          fullName: form.name,
+          email: form.email,
+          message: form.message,
+          contact: form.phone,
+        }
+      );
+
+      toast.success(data.message || "Message sent successfully!");
+      console.log("Response Data:", data); // Log the response data for debugging
+      console.log("API URL:", import.meta.env.local.VITE_API_URL); // Log the API URL for debugging
+
+      setForm({
+        name: "",
+        phone: "",
+        email: "",
+        message: "",
+      });
+    } catch (error: any) {
+      toast.error(
+        error?.response?.data?.message ||
+          "Failed to send message. Please try again."
+      );
+    } finally {
       setLoading(false);
-      toast.success("Message sent! I'll get back to you soon 🚀");
-      setForm({ name: "", phone: "", email: "", message: "" });
-    }, 1200);
+    }
   };
 
   return (
