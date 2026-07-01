@@ -8,6 +8,7 @@ import {
   FaFigma,
   FaJava,
   FaDocker,
+  FaPython,
 } from "react-icons/fa";
 import {
   SiJavascript,
@@ -97,7 +98,7 @@ export const projects = [
       "Modern full-stack e-commerce platform with Razorpay payment integration.",
     tags: ["React", "Node.js", "MongoDB"],
     gradient: "from-fuchsia-500 via-purple-500 to-indigo-500",
-    link: "#",
+    link: "https://biggest-shop-mart.onrender.com",
   },
   {
     title: "Chat Application",
@@ -114,7 +115,7 @@ export const projects = [
       "AI-powered code review platform with suggestions and corrections.",
     tags: ["Next.js", "Express", "Cloudinary"],
     gradient: "from-emerald-500 via-teal-500 to-cyan-500",
-    link: "#",
+    link: "https://code-review-2-xfed.onrender.com",
   },
 ];
 
@@ -124,8 +125,8 @@ export const skillGroups = [
     skills: [
       { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-      { name: "Java", icon: FaJava, color: "#EA2D2E" },
-      { name: "C", icon: SiC, color: "#A8B9CC" },
+      { name: "Python", icon: FaPython, color: "#3776AB" },
+      { name: "C++", icon: SiC, color: "#A8B9CC" },
     ],
   },
   {
