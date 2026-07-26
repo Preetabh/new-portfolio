@@ -9,6 +9,7 @@ import {
   FaJava,
   FaDocker,
   FaPython,
+  FaPhp,
 } from "react-icons/fa";
 import {
   SiJavascript,
@@ -26,6 +27,7 @@ import {
   SiFramer,
   SiMysql,
   SiC,
+  SiLaravel,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
@@ -48,7 +50,7 @@ export const personal = {
 
 export const aboutParagraphs = [
   "Hello 👋! I'm Preetabh Awasthi, a BCA (Bachelor of Computer Applications) student currently pursuing my degree and passionate about full-stack web development. I specialize in both front-end and back-end development, creating modern, responsive, and user-friendly web applications.",
-  "My core skills include React.js, Next.js, Node.js, Express.js, MongoDB, PostgreSQL, Prisma, Socket.IO, JavaScript, and REST APIs. I enjoy building scalable applications with clean UI/UX and efficient backend architectures.",
+  "My core skills include PHP, Laravel, React.js, Next.js, Node.js, Express.js, MongoDB, PostgreSQL, Prisma, Socket.IO, JavaScript, and REST APIs. I enjoy building scalable applications with clean UI/UX and efficient backend architectures.",
   "As a continuous learner 📖 and tech enthusiast 🤖, I am always exploring new technologies, improving my development skills, and staying updated with the latest industry trends.",
   "I believe that consistency, creativity, and continuous learning are the keys to becoming a successful developer in the ever-evolving tech industry.",
 ];
@@ -123,6 +125,7 @@ export const skillGroups = [
   {
     title: "Languages",
     skills: [
+      { name: "PHP", icon: FaPhp, color: "#777BB4" },
       { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
       { name: "Python", icon: FaPython, color: "#3776AB" },
@@ -132,6 +135,8 @@ export const skillGroups = [
   {
     title: "Web Development",
     skills: [
+      { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
+      { name: "PHP", icon: FaPhp, color: "#777BB4" },
       { name: "HTML5", icon: FaHtml5, color: "#E34F26" },
       { name: "CSS3", icon: FaCss3Alt, color: "#1572B6" },
       { name: "React", icon: FaReact, color: "#61DAFB" },

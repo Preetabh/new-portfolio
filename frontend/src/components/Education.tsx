@@ -1,79 +1,72 @@
 import { motion } from "framer-motion";
-import { HiOutlineAcademicCap } from "react-icons/hi";
+import { HiOutlineAcademicCap, HiOutlineCalendar, HiOutlineLocationMarker } from "react-icons/hi";
 import { education } from "../data/portfolio";
 import { cn } from "../utils/cn";
 
 export default function Education() {
   return (
-    <section className="relative px-4 py-24 sm:px-6">
+    <section className="relative px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="mb-14 text-center"
-        >
-          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
-            <HiOutlineAcademicCap size={14} />
-            Timeline
+        {/* Header */}
+        <div className="mb-12 text-center">
+          <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+            <HiOutlineAcademicCap size={13} />
+            Milestones
           </span>
-          <h2 className="font-display text-3xl font-black text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
             Education &amp; Experience
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-slate-500 dark:text-slate-400">
-            Academic milestones designed for both light and dark mode with modern UI polish.
+          <p className="mx-auto mt-2 max-w-lg text-sm text-slate-600 dark:text-slate-400">
+            Academic degree and hands-on full-stack intern experience.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {education.map((item, i) => (
+        {/* Timeline */}
+        <div className="grid gap-5 md:grid-cols-2">
+          {education.map((item) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: (i % 2) * 0.15 }}
-              whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-2xl border border-black/5 bg-white/70 p-6 shadow-sm backdrop-blur transition-shadow hover:shadow-xl hover:shadow-indigo-500/10 dark:border-white/10 dark:bg-white/5"
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.2 }}
+              className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-[#0b0e1b]"
             >
-              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-500/0 via-transparent to-fuchsia-500/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:from-indigo-500/5 group-hover:to-fuchsia-500/5" />
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-2xl shadow-md shadow-indigo-500/30">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start gap-3.5">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm font-bold text-lg">
                     🎓
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white">
                       {item.title}
                     </h3>
-                    <p className="mt-1 flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
-                      <span>📍</span>
+                    <p className="mt-1 flex items-center gap-1 text-xs text-slate-600 dark:text-slate-400">
+                      <HiOutlineLocationMarker className="text-indigo-500" size={14} />
                       {item.place}
                     </p>
-                    <p className="mt-1 flex items-center gap-1 text-sm font-medium text-slate-500 dark:text-slate-400">
-                      <span>📅</span>
+                    <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                      <HiOutlineCalendar className="text-purple-500" size={14} />
                       {item.date}
                     </p>
                   </div>
                 </div>
+
                 <span
                   className={cn(
-                    "shrink-0 rounded-full px-3 py-1 text-xs font-semibold",
+                    "shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-bold",
                     item.status === "Running"
-                      ? "bg-amber-500/15 text-amber-600 dark:text-amber-400"
-                      : "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+                      ? "bg-amber-500/15 text-amber-600 dark:text-amber-300"
+                      : "bg-emerald-500/15 text-emerald-600 dark:text-emerald-300"
                   )}
                 >
                   {item.status}
                 </span>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-1.5">
                 {item.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300"
+                    className="rounded-md bg-indigo-500/10 px-2.5 py-0.5 text-[11px] font-bold text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300"
                   >
                     {tag}
                   </span>
@@ -83,8 +76,6 @@ export default function Education() {
           ))}
         </div>
       </div>
-
-      <div className="mx-auto mt-16 h-px max-w-6xl bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-white/10" />
     </section>
   );
 }

@@ -4,88 +4,81 @@ import { projects } from "../data/portfolio";
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative px-4 py-24 sm:px-6">
+    <section id="projects" className="relative px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="mb-14 text-center"
-        >
-          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
-            <HiOutlineFolder size={14} />
+        {/* Header */}
+        <div className="mb-12 text-center">
+          <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+            <HiOutlineFolder size={13} />
             Portfolio
           </span>
-          <h2 className="font-display text-3xl font-black text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
-            Explore My Work <span className="align-middle">🕵️</span>
+          <h2 className="font-display text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
+            Featured Full Stack Projects
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-slate-500 dark:text-slate-400">
-            A collection of modern full-stack projects focused on performance, UI/UX and scalable architecture.
+          <p className="mx-auto mt-2 max-w-lg text-sm text-slate-600 dark:text-slate-400">
+            Real-world full-stack web applications with modern features.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
+        {/* Grid */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              whileHover={{ y: -8 }}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-black/5 bg-white/70 shadow-sm backdrop-blur transition-shadow hover:shadow-2xl hover:shadow-indigo-500/10 dark:border-white/10 dark:bg-white/5"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-colors hover:border-indigo-500/50 dark:border-slate-800 dark:bg-[#0b0e1b]"
             >
+              {/* Banner */}
               <div
-                className={`relative flex h-48 items-center justify-center overflow-hidden bg-gradient-to-br ${project.gradient}`}
+                className={`relative flex h-44 items-center justify-center bg-gradient-to-br ${project.gradient}`}
               >
-                <motion.div
-                  className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_50%)]"
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                />
-                <span className="relative font-display text-2xl font-black text-white/90 drop-shadow-lg">
+                <span className="relative z-10 px-4 text-center font-display text-2xl font-black text-white">
                   {project.title}
                 </span>
+
                 {project.locked && (
-                  <div className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur">
+                  <div className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white">
                     <HiOutlineLockClosed size={16} />
                   </div>
                 )}
               </div>
 
-              <div className="flex flex-1 flex-col p-6">
-                <div className="mb-3 flex flex-wrap gap-2">
+              {/* Body */}
+              <div className="flex flex-1 flex-col p-5">
+                <div className="mb-3 flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300"
+                      className="rounded-md bg-indigo-500/10 px-2.5 py-0.5 text-[11px] font-bold text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
+
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                   {project.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+
+                <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
                   {project.description}
                 </p>
 
                 {project.locked ? (
-                  <div className="mt-5 flex cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-slate-200 px-4 py-3 text-sm font-semibold text-slate-500 dark:bg-white/10 dark:text-slate-300">
-                    Working on locally due to security reasons
+                  <div className="mt-5 flex cursor-not-allowed items-center justify-center gap-1.5 rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-bold text-slate-500 dark:bg-slate-800/80 dark:text-slate-400">
                     <HiOutlineLockClosed size={14} />
+                    Developing locally
                   </div>
                 ) : (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 px-4 py-3 text-sm font-semibold text-white shadow-md shadow-indigo-500/30 transition-transform group-hover:scale-[1.02]"
+                    className="mt-5 flex items-center justify-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition-colors hover:bg-indigo-500"
                   >
                     View Project
-                    <HiOutlineArrowUpRight size={16} />
+                    <HiOutlineArrowUpRight size={14} />
                   </a>
                 )}
               </div>
@@ -93,8 +86,6 @@ export default function Projects() {
           ))}
         </div>
       </div>
-
-      <div className="mx-auto mt-16 h-px max-w-6xl bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-white/10" />
     </section>
   );
 }

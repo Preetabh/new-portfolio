@@ -12,9 +12,9 @@ import {
 import { personal } from "../data/portfolio";
 
 const contactCards = [
-  { icon: HiOutlineMail, label: "Email", value: personal.email, color: "from-indigo-500 to-blue-500" },
-  { icon: HiOutlineLocationMarker, label: "Location", value: personal.location, color: "from-fuchsia-500 to-pink-500" },
-  { icon: HiOutlinePhone, label: "Phone", value: personal.phone, color: "from-emerald-500 to-teal-500" },
+  { icon: HiOutlineMail, label: "Email", value: personal.email },
+  { icon: HiOutlineLocationMarker, label: "Location", value: personal.location },
+  { icon: HiOutlinePhone, label: "Phone", value: personal.phone },
 ];
 
 export default function Contact() {
@@ -39,7 +39,7 @@ export default function Contact() {
 
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1`,
+        `${import.meta.env.VITE_API_URL || ""}/api/v1`,
         {
           fullName: form.name,
           email: form.email,
@@ -49,9 +49,6 @@ export default function Contact() {
       );
 
       toast.success(data.message || "Message sent successfully!");
-      console.log("Response Data:", data); // Log the response data for debugging
-      console.log("API URL:", import.meta.env.local.VITE_API_URL); // Log the API URL for debugging
-
       setForm({
         name: "",
         phone: "",
@@ -69,116 +66,101 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative px-4 py-24 sm:px-6">
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.85fr_1.15fr]">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
-            Get In Touch
+    <section id="contact" className="relative px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-12">
+        {/* Info Column */}
+        <div className="lg:col-span-5">
+          <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+            <HiOutlineChatAlt2 size={13} />
+            Contact
           </span>
-          <h2 className="font-display text-3xl font-black text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
-            Contact Me
+          <h2 className="font-display text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
+            Let&apos;s Work Together
           </h2>
-          <p className="mt-4 max-w-md text-slate-500 dark:text-slate-400">
-            Have a project in mind or just want to say hi? My inbox is always open.
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+            Have a question or a project idea? Send me a message below.
           </p>
 
-          <div className="mt-8 space-y-4">
-            {contactCards.map((c, i) => (
-              <motion.div
+          <div className="mt-6 space-y-3">
+            {contactCards.map((c) => (
+              <div
                 key={c.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ x: 6 }}
-                className="flex items-center gap-4 rounded-2xl border border-black/5 bg-white/70 p-4 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5"
+                className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm dark:border-slate-800 dark:bg-[#0b0e1b]"
               >
-                <div
-                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${c.color} text-white shadow-md`}
-                >
-                  <c.icon size={20} />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-indigo-600 text-white">
+                  <c.icon size={18} />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">{c.label}</p>
-                  <p className="font-semibold text-slate-900 dark:text-white">{c.value}</p>
+                  <p className="text-[10px] font-bold uppercase text-slate-400">{c.label}</p>
+                  <p className="text-xs font-bold text-slate-900 dark:text-white">{c.value}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        <motion.form
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
+        {/* Form */}
+        <form
+          className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-[#0b0e1b] lg:col-span-7"
           onSubmit={handleSubmit}
-          className="relative overflow-hidden rounded-3xl border border-black/5 bg-white/70 p-6 shadow-xl shadow-indigo-500/5 backdrop-blur dark:border-white/10 dark:bg-white/5 sm:p-8"
         >
-          <div className="mb-6 flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500 text-white shadow-md">
-              <HiOutlineChatAlt2 size={20} />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">Send Message</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Let&apos;s discuss your next project.</p>
-            </div>
-          </div>
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">
+            Send Message
+          </h3>
 
-          <div className="space-y-5">
-            <div>
-              <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">
-                Full Name
-              </label>
-              <input
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Enter your name"
-                className="w-full rounded-xl border border-black/10 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-indigo-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500"
-              />
+          <div className="space-y-4">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label className="mb-1 block text-xs font-bold text-slate-700 dark:text-slate-300">
+                  Full Name *
+                </label>
+                <input
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="John Doe"
+                  className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs text-slate-900 outline-none transition-colors focus:border-indigo-600 dark:border-slate-800 dark:bg-slate-900 dark:text-white"
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-xs font-bold text-slate-700 dark:text-slate-300">
+                  Phone Number
+                </label>
+                <input
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  placeholder="+91 9876543210"
+                  className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs text-slate-900 outline-none transition-colors focus:border-indigo-600 dark:border-slate-800 dark:bg-slate-900 dark:text-white"
+                />
+              </div>
             </div>
+
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">
-                Phone Number
-              </label>
-              <input
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                placeholder="Enter your phone number"
-                className="w-full rounded-xl border border-black/10 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-indigo-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500"
-              />
-            </div>
-            <div>
-              <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">
-                Email Address
+              <label className="mb-1 block text-xs font-bold text-slate-700 dark:text-slate-300">
+                Email Address *
               </label>
               <input
                 name="email"
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="Enter your email"
-                className="w-full rounded-xl border border-black/10 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-indigo-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500"
+                placeholder="john@example.com"
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs text-slate-900 outline-none transition-colors focus:border-indigo-600 dark:border-slate-800 dark:bg-slate-900 dark:text-white"
               />
             </div>
+
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">
-                Message
+              <label className="mb-1 block text-xs font-bold text-slate-700 dark:text-slate-300">
+                Message *
               </label>
               <textarea
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Write your message"
-                rows={5}
-                className="w-full resize-none rounded-xl border border-black/10 bg-white/80 px-4 py-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-indigo-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500"
+                placeholder="Your message here..."
+                rows={4}
+                className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs text-slate-900 outline-none transition-colors focus:border-indigo-600 dark:border-slate-800 dark:bg-slate-900 dark:text-white"
               />
             </div>
 
@@ -187,22 +169,19 @@ export default function Contact() {
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={loading}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-indigo-500/30 disabled:opacity-70"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-indigo-600 px-5 py-3 text-xs font-bold text-white shadow-sm transition-colors hover:bg-indigo-500 disabled:opacity-70"
             >
               {loading ? (
-                <>
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                  Sending...
-                </>
+                "Sending..."
               ) : (
                 <>
                   Send Message
-                  <HiOutlinePaperAirplane className="rotate-90" size={16} />
+                  <HiOutlinePaperAirplane className="rotate-45" size={14} />
                 </>
               )}
             </motion.button>
           </div>
-        </motion.form>
+        </form>
       </div>
     </section>
   );

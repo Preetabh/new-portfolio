@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import toast from "react-hot-toast";
-import { HiOutlineMenu, HiOutlineX, HiOutlineDownload } from "react-icons/hi";
+import { HiOutlineMenu, HiOutlineX, HiOutlineDownload, HiOutlineSparkles } from "react-icons/hi";
 import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi2";
 import { useTheme } from "../context/ThemeContext";
 import { useActiveSection } from "../hooks/useActiveSection";
 import { cn } from "../utils/cn";
-import { personal } from "../data/portfolio";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
@@ -25,7 +23,7 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -45,108 +43,92 @@ export default function Navbar() {
   };
 
   return (
-    <motion.header
-      initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6"
-    >
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6 lg:px-8">
       <div
         className={cn(
-          "mx-auto flex max-w-6xl items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 sm:px-6",
+          "mx-auto flex max-w-6xl items-center justify-between rounded-xl px-5 py-3 transition-colors duration-200",
           scrolled
-            ? "border-black/5 bg-white/80 shadow-lg shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.06] dark:shadow-black/40"
-            : "border-transparent bg-white/40 backdrop-blur-md dark:bg-white/[0.02]"
+            ? "border border-slate-200 bg-white/95 shadow-md dark:border-slate-800 dark:bg-[#080b18]/95"
+            : "border border-transparent bg-white/50 dark:bg-transparent"
         )}
       >
+        {/* Brand Logo */}
         <button
           onClick={() => scrollTo("home")}
-          className="font-display text-lg font-black italic tracking-tight text-slate-900 dark:text-white"
+          className="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-slate-900 dark:text-white"
         >
-          Preetabh
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white font-black text-sm">
+            P
+          </span>
+          <span>Preetabh</span>
+          <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
         </button>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 rounded-full border border-black/5 bg-black/[0.03] p-1 dark:border-white/10 dark:bg-white/5 md:flex">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollTo(item.id)}
-              className={cn(
-                "relative rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                active === item.id
-                  ? "text-white"
-                  : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
-              )}
-            >
-              {active === item.id && (
-                <motion.span
-                  layoutId="nav-pill"
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 shadow-md shadow-indigo-500/30"
-                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-1.5">
-                {item.label}
-                {active === item.id && (
-                  <span className="h-1.5 w-1.5 rounded-full bg-white" />
+        {/* Desktop Navigation - React Bits Snappy Spring Pill */}
+        <nav className="hidden items-center gap-1 rounded-full border border-slate-200 bg-slate-100/80 p-1 dark:border-slate-800 dark:bg-slate-900/80 md:flex">
+          {NAV_ITEMS.map((item) => {
+            const isActive = active === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                className={cn(
+                  "relative rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-150",
+                  isActive
+                    ? "text-white"
+                    : "text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
                 )}
-              </span>
-            </button>
-          ))}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="active-nav-pill"
+                    className="absolute inset-0 rounded-full bg-indigo-600 shadow-sm"
+                    transition={{ type: "spring", stiffness: 450, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{item.label}</span>
+              </button>
+            );
+          })}
         </nav>
 
+        {/* Action Buttons */}
         <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-600 text-white shadow-md shadow-fuchsia-500/30 transition-transform hover:scale-105"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 hover:border-indigo-500 dark:border-slate-800 dark:bg-slate-900 dark:text-amber-400"
           >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={theme}
-                initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.3 }}
-                className="absolute"
-              >
-                {theme === "dark" ? (
-                  <HiOutlineSun size={18} />
-                ) : (
-                  <HiOutlineMoon size={18} />
-                )}
-              </motion.span>
-            </AnimatePresence>
+            {theme === "dark" ? <HiOutlineSun size={18} /> : <HiOutlineMoon size={18} />}
           </button>
 
           <button
             onClick={handleDownloadCV}
-            className="hidden items-center gap-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-indigo-500/30 transition-transform hover:scale-105 sm:flex"
+            className="hidden items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition-transform active:scale-95 hover:bg-indigo-500 sm:flex"
           >
-            <HiOutlineDownload size={16} />
+            <HiOutlineDownload size={14} />
             Download CV
           </button>
 
           <button
             onClick={() => setOpen((o) => !o)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-slate-700 dark:border-white/10 dark:text-white md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 dark:border-slate-800 dark:text-white md:hidden"
             aria-label="Toggle menu"
           >
-            {open ? <HiOutlineX size={20} /> : <HiOutlineMenu size={20} />}
+            {open ? <HiOutlineX size={18} /> : <HiOutlineMenu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile nav */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mx-auto mt-2 max-w-6xl overflow-hidden rounded-2xl border border-black/5 bg-white/90 p-3 backdrop-blur-xl dark:border-white/10 dark:bg-[#0b0d1a]/95 md:hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.15 }}
+            className="mx-auto mt-2 max-w-6xl rounded-xl border border-slate-200 bg-white p-3 shadow-xl dark:border-slate-800 dark:bg-[#080b18] md:hidden"
           >
             <div className="flex flex-col gap-1">
               {NAV_ITEMS.map((item) => (
@@ -154,26 +136,27 @@ export default function Navbar() {
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
                   className={cn(
-                    "rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors",
+                    "flex items-center justify-between rounded-lg px-4 py-2.5 text-left text-xs font-semibold transition-colors",
                     active === item.id
-                      ? "bg-gradient-to-r from-indigo-500 to-violet-500 text-white"
-                      : "text-slate-600 hover:bg-black/5 dark:text-slate-300 dark:hover:bg-white/5"
+                      ? "bg-indigo-600 text-white"
+                      : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-900"
                   )}
                 >
                   {item.label}
+                  {active === item.id && <HiOutlineSparkles size={14} />}
                 </button>
               ))}
               <button
                 onClick={handleDownloadCV}
-                className="mt-1 flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-4 py-3 text-sm font-semibold text-white"
+                className="mt-1 flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-xs font-bold text-white"
               >
-                <HiOutlineDownload size={16} />
+                <HiOutlineDownload size={14} />
                 Download CV
               </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
