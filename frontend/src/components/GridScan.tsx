@@ -86,7 +86,7 @@ export default function GridScan({
       />
 
       {/* Ambient Corner Radial Accents */}
-      <div className="absolute -to-p32 -left-32 h-[450px] w-[450px] rounded-full bg-indigo-600/10 blur-[110px] dark:bg-indigo-600/15" />
+      <div className="absolute -top-32 -left-32 h-[450px] w-[450px] rounded-full bg-indigo-600/10 blur-[110px] dark:bg-indigo-600/15" />
       <div className="absolute -bottom-32 -right-32 h-[450px] w-[450px] rounded-full bg-purple-600/10 blur-[110px] dark:bg-purple-600/15" />
     </div>
   );
