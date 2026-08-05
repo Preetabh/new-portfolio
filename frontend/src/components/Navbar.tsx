@@ -34,8 +34,11 @@ export default function Navbar() {
   };
 
   const handleDownloadCV = () => {
+    const resumePath = "/Preetabh Awasthi - Full Stack & PHP _ Laravel Developer Resume.pdf";
+    window.open(resumePath, "_blank");
+
     const link = document.createElement("a");
-    link.href = "/Preetabh Awasthi - Full Stack & PHP _ Laravel Developer Resume.pdf";
+    link.href = resumePath;
     link.download = "Preetabh Awasthi - Full Stack & PHP _ Laravel Developer Resume.pdf";
     document.body.appendChild(link);
     link.click();
