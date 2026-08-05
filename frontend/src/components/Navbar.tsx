@@ -35,8 +35,8 @@ export default function Navbar() {
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/preetabh resume.pdf";
-    link.download = "preetabh resume.pdf";
+    link.href = "/Preetabh Awasthi - Full Stack & PHP _ Laravel Developer Resume.pdf";
+    link.download = "Preetabh Awasthi - Full Stack & PHP _ Laravel Developer Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
