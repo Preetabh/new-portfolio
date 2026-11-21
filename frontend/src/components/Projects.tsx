@@ -122,7 +122,7 @@ export default function Projects() {
                       rel="noreferrer"
                       className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-[#ff5722] px-3 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-[#ff7043]"
                     >
-                      <span>View Demo</span>
+                      <span>View Live</span>
                       <HiOutlineArrowTopRightOnSquare size={13} />
                     </a>
                   )}

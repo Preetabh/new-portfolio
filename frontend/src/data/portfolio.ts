@@ -118,8 +118,8 @@ export const verifiedMetrics = [
   },
   {
     label: "Projects & Apps",
-    value: "14+",
-    subtext: "Production ready",
+    value: "16+",
+    subtext: "Production portals & apps",
     color: "#a855f7",
   },
 ];
@@ -223,6 +223,38 @@ export const skills: SkillItem[] = [
 ];
 
 export const projects: ProjectItem[] = [
+  {
+    id: "hrpilot-hrms",
+    title: "HRPilot – HRMS Portal",
+    category: "fullstack",
+    stack: "React, PHP/Laravel, MySQL",
+    description: "Enterprise Human Resource Management System featuring complete employee lifecycle management, attendance tracking, leave approvals, and role-based access control.",
+    highlights: [
+      "End-to-end staff onboarding, employee profiles, and department hierarchies",
+      "Automated attendance tracking, leave requests, and payroll workflows",
+      "Secure role-based permissions (Admin, HR, Employee) and responsive UI",
+    ],
+    tags: ["React", "PHP", "Laravel", "MySQL", "REST APIs", "Tailwind CSS"],
+    liveUrl: "https://hrpilot.ojdeducation.com",
+    githubUrl: "https://github.com/preetabh",
+    featured: true,
+  },
+  {
+    id: "infrapilot-leadforce",
+    title: "InfraPilot – Lead Force Portal",
+    category: "fullstack",
+    stack: "React, Node.js, MySQL",
+    description: "High-performance Lead Force & CRM management portal designed for automated lead distribution, pipeline tracking, team performance analytics, and follow-ups.",
+    highlights: [
+      "Real-time lead capture, automated agent assignment, and stage tracking",
+      "Comprehensive team performance metrics, activity logs, and conversion analytics",
+      "Robust REST API architecture engineered for high concurrency and speed",
+    ],
+    tags: ["React", "Node.js", "Express", "MySQL", "CRM", "Analytics"],
+    liveUrl: "https://infrapilot.ojdeducation.com",
+    githubUrl: "https://github.com/preetabh",
+    featured: true,
+  },
   {
     id: "biggest-shop-mart",
     title: "E-Commerce Website",
