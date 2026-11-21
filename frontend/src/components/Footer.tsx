@@ -1,42 +1,91 @@
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
+import { HiOutlineArrowUp } from "react-icons/hi";
+import { FaGithub, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import { personal } from "../data/portfolio";
 
-const socialLinks = [
-  { icon: FaGithub, href: personal.socials.github, label: "GitHub" },
-  { icon: FaLinkedin, href: personal.socials.linkedin, label: "LinkedIn" },
-  { icon: FaTwitter, href: personal.socials.twitter, label: "Twitter" },
-  { icon: FaInstagram, href: personal.socials.instagram, label: "Instagram" },
-];
-
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <footer className="relative border-t border-black/5 bg-slate-900/[0.02] px-4 py-12 dark:border-white/10 dark:bg-white/[0.01] sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
-        <div className="flex items-center gap-2 font-display text-xl font-black italic tracking-tight text-slate-900 dark:text-white">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-indigo-600 to-fuchsia-600 text-xs not-italic text-white shadow-md">
-            P
-          </span>
-          <span>Preetabh</span>
-          <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
-        </div>
+    <footer className="relative border-t border-slate-200 bg-white/95 text-slate-700 px-4 py-10 sm:px-6 lg:px-8 dark:border-white/10 dark:bg-[#060814]/90 dark:text-slate-300">
+      <div className="mx-auto max-w-5xl">
+        <div className="flex flex-col items-center justify-between gap-5 sm:flex-row">
+          {/* Brand */}
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#ff5722] text-xs font-black text-white shadow-md shadow-[#ff5722]/30">
+              P
+            </div>
+            <div>
+              <div className="font-display text-sm font-bold text-slate-900 dark:text-white">
+                {personal.fullName}
+              </div>
+              <p className="text-[10px] text-slate-500 dark:text-slate-400">
+                {personal.role}
+              </p>
+            </div>
+          </div>
 
-        <p className="text-center text-xs font-medium text-slate-500 dark:text-slate-400">
-          © {new Date().getFullYear()} {personal.fullName}. Built with PHP, Laravel, React, Tailwind &amp; Framer Motion.
-        </p>
+          {/* Quick Nav Links */}
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-600 dark:text-slate-400">
+            {["home", "about", "skills", "projects", "education", "contact"].map((sec) => (
+              <button
+                key={sec}
+                onClick={() => scrollTo(sec)}
+                className="capitalize hover:text-[#ff5722] transition-colors"
+              >
+                {sec}
+              </button>
+            ))}
+          </div>
 
-        <div className="flex items-center gap-3">
-          {socialLinks.map((s) => (
+          {/* Socials & Top */}
+          <div className="flex items-center gap-2">
             <a
-              key={s.label}
-              href={s.href}
+              href={personal.github}
               target="_blank"
               rel="noreferrer"
-              aria-label={s.label}
-              className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white/70 text-slate-600 shadow-sm transition-all hover:-translate-y-1 hover:border-indigo-500 hover:text-indigo-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
+              aria-label="GitHub"
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-slate-100 text-slate-700 hover:text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:text-white transition-colors"
             >
-              <s.icon size={15} />
+              <FaGithub size={14} />
             </a>
-          ))}
+
+            <a
+              href={personal.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-slate-100 text-emerald-600 hover:text-emerald-700 dark:border-white/10 dark:bg-white/5 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors"
+            >
+              <FaWhatsapp size={14} />
+            </a>
+
+            <a
+              href={`mailto:${personal.email}`}
+              aria-label="Email"
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-slate-100 text-[#ff5722] transition-colors dark:border-white/10 dark:bg-white/5"
+            >
+              <FaEnvelope size={12} />
+            </a>
+
+            <button
+              onClick={scrollToTop}
+              title="Back to Top"
+              aria-label="Back to Top"
+              className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#ff5722] text-white shadow-md transition-transform hover:-translate-y-0.5"
+            >
+              <HiOutlineArrowUp size={14} />
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-6 border-t border-slate-200 dark:border-white/5 pt-4 text-center text-xs text-slate-500">
+          © {new Date().getFullYear()} {personal.fullName}. All rights reserved.
         </div>
       </div>
     </footer>

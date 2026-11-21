@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { HiOutlineMenu, HiOutlineX, HiOutlineDownload, HiOutlineSparkles } from "react-icons/hi";
-import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi2";
+import {
+  HiOutlineMenu,
+  HiOutlineX,
+  HiOutlineDocumentText,
+  HiOutlineSun,
+  HiOutlineMoon,
+} from "react-icons/hi";
+import { FaGithub, FaWhatsapp } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 import { useActiveSection } from "../hooks/useActiveSection";
+import { personal } from "../data/portfolio";
 import { cn } from "../utils/cn";
 
 const NAV_ITEMS = [
@@ -11,13 +18,18 @@ const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact Us" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  onOpenResume: () => void;
+}
+
+export default function Navbar({ onOpenResume }: NavbarProps) {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const active = useActiveSection(NAV_ITEMS.map((n) => n.id));
 
   useEffect(() => {
@@ -28,47 +40,39 @@ export default function Navbar() {
   }, []);
 
   const scrollTo = (id: string) => {
-    setOpen(false);
+    setMobileOpen(false);
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const handleDownloadCV = () => {
-    const resumePath = "/Preetabh Awasthi - Full Stack & PHP _ Laravel Developer Resume.pdf";
-    window.open(resumePath, "_blank");
-
-    const link = document.createElement("a");
-    link.href = resumePath;
-    link.download = "Preetabh Awasthi - Full Stack & PHP _ Laravel Developer Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6 lg:px-8">
+    <header className="fixed inset-x-0 top-0 z-40 px-3 pt-3 sm:px-6 lg:px-8">
       <div
         className={cn(
-          "mx-auto flex max-w-6xl items-center justify-between rounded-xl px-5 py-3 transition-colors duration-200",
+          "mx-auto flex max-w-5xl items-center justify-between rounded-2xl px-4 py-2.5 transition-all duration-300 sm:px-5 sm:py-3",
           scrolled
-            ? "border border-slate-200 bg-white/95 shadow-md dark:border-slate-800 dark:bg-[#080b18]/95"
-            : "border border-transparent bg-white/50 dark:bg-transparent"
+            ? "border border-slate-200/80 bg-white/90 shadow-xl shadow-slate-200/50 backdrop-blur-xl dark:border-white/10 dark:bg-[#0a0d1b]/90 dark:shadow-black/40"
+            : "border border-transparent bg-transparent"
         )}
       >
-        {/* Brand Logo */}
+        {/* Brand */}
         <button
           onClick={() => scrollTo("home")}
-          className="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-slate-900 dark:text-white"
+          className="group flex items-center gap-2.5 text-left focus:outline-none"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white font-black text-sm">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-[#ff5722] to-[#ff8a65] text-sm font-black text-white shadow-md shadow-[#ff5722]/30 transition-transform group-hover:scale-105">
             P
-          </span>
-          <span>Preetabh</span>
-          <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+          </div>
+          <div>
+            <div className="font-display text-base font-extrabold tracking-tight text-slate-900 dark:text-white">
+              {personal.name}
+              <span className="text-[#ff5722]">.dev</span>
+            </div>
+          </div>
         </button>
 
-        {/* Desktop Navigation - React Bits Snappy Spring Pill */}
-        <nav className="hidden items-center gap-1 rounded-full border border-slate-200 bg-slate-100/80 p-1 dark:border-slate-800 dark:bg-slate-900/80 md:flex">
+        {/* Desktop Navigation */}
+        <nav className="hidden items-center gap-1 rounded-full border border-slate-200 bg-slate-100/80 p-1.5 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.03] md:flex">
           {NAV_ITEMS.map((item) => {
             const isActive = active === item.id;
             return (
@@ -76,7 +80,7 @@ export default function Navbar() {
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
                 className={cn(
-                  "relative rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-150",
+                  "relative rounded-full px-4 py-1.5 text-xs font-semibold transition-colors duration-150 focus:outline-none",
                   isActive
                     ? "text-white"
                     : "text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
@@ -85,7 +89,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="active-nav-pill"
-                    className="absolute inset-0 rounded-full bg-indigo-600 shadow-sm"
+                    className="absolute inset-0 rounded-full bg-[#ff5722] shadow-md shadow-[#ff5722]/40"
                     transition={{ type: "spring", stiffness: 450, damping: 30 }}
                   />
                 )}
@@ -95,43 +99,45 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* Actions */}
+        <div className="flex items-center gap-2">
           <button
+            type="button"
+            onClick={onOpenResume}
+            className="flex items-center gap-1.5 rounded-xl border border-[#ff5722]/30 bg-[#ff5722]/10 px-3.5 py-1.5 text-xs font-bold text-[#ff5722] transition-all hover:bg-[#ff5722] hover:text-white"
+          >
+            <HiOutlineDocumentText size={15} />
+            <span>Resume</span>
+          </button>
+
+          <button
+            type="button"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 hover:border-indigo-500 dark:border-slate-800 dark:bg-slate-900 dark:text-amber-400"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-slate-700 transition-colors hover:bg-slate-200 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:text-white"
           >
-            {theme === "dark" ? <HiOutlineSun size={18} /> : <HiOutlineMoon size={18} />}
+            {theme === "dark" ? <HiOutlineSun size={17} /> : <HiOutlineMoon size={17} />}
           </button>
 
           <button
-            onClick={handleDownloadCV}
-            className="hidden items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition-transform active:scale-95 hover:bg-indigo-500 sm:flex"
-          >
-            <HiOutlineDownload size={14} />
-            Download CV
-          </button>
-
-          <button
-            onClick={() => setOpen((o) => !o)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-700 dark:border-slate-800 dark:text-white md:hidden"
+            type="button"
+            onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-slate-700 transition-colors hover:text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:text-white md:hidden"
           >
-            {open ? <HiOutlineX size={18} /> : <HiOutlineMenu size={18} />}
+            {mobileOpen ? <HiOutlineX size={20} /> : <HiOutlineMenu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       <AnimatePresence>
-        {open && (
+        {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.15 }}
-            className="mx-auto mt-2 max-w-6xl rounded-xl border border-slate-200 bg-white p-3 shadow-xl dark:border-slate-800 dark:bg-[#080b18] md:hidden"
+            className="mx-auto mt-2 max-w-5xl overflow-hidden rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-2xl backdrop-blur-2xl dark:border-white/10 dark:bg-[#0a0d1b]/95 md:hidden"
           >
             <div className="flex flex-col gap-1">
               {NAV_ITEMS.map((item) => (
@@ -139,23 +145,37 @@ export default function Navbar() {
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
                   className={cn(
-                    "flex items-center justify-between rounded-lg px-4 py-2.5 text-left text-xs font-semibold transition-colors",
+                    "flex items-center justify-between rounded-xl px-4 py-2.5 text-left text-sm font-semibold transition-colors",
                     active === item.id
-                      ? "bg-indigo-600 text-white"
-                      : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-900"
+                      ? "bg-[#ff5722] text-white"
+                      : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
                   )}
                 >
-                  {item.label}
-                  {active === item.id && <HiOutlineSparkles size={14} />}
+                  <span>{item.label}</span>
+                  {active === item.id && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
                 </button>
               ))}
-              <button
-                onClick={handleDownloadCV}
-                className="mt-1 flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-xs font-bold text-white"
+            </div>
+
+            <div className="mt-4 flex items-center justify-between border-t border-slate-200 dark:border-white/10 pt-3">
+              <a
+                href={personal.github}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
               >
-                <HiOutlineDownload size={14} />
-                Download CV
-              </button>
+                <FaGithub size={15} />
+                <span>GitHub</span>
+              </a>
+              <a
+                href={personal.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 hover:underline"
+              >
+                <FaWhatsapp size={15} />
+                <span>WhatsApp</span>
+              </a>
             </div>
           </motion.div>
         )}

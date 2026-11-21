@@ -32,6 +32,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
+      "http://localhost:3000",
+      "https://saurabh-portfolio-orpin.vercel.app",
       "https://preetabh.vercel.app",
     ],
     credentials: true,
