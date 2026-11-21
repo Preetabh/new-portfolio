@@ -11,6 +11,7 @@ import {
   FaEnvelope,
   FaPhp,
   FaLinkedin,
+  FaMobileAlt,
 } from "react-icons/fa";
 import {
   SiJavascript,
@@ -26,16 +27,37 @@ import {
   SiVite,
   SiVercel,
   SiSocketdotio,
+  SiDotnet,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import type { IconType } from "react-icons";
 
 export interface SkillItem {
   name: string;
-  category: "frontend" | "backend" | "database" | "tools";
+  category: "frontend" | "backend" | "mobile" | "database" | "tools";
   level: "Advanced" | "Proficient" | "Familiar";
   icon: IconType;
   color: string;
+}
+
+export interface ExperienceItem {
+  id: string;
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  type: "Full-Time" | "Remote" | "Internship";
+  status: "Current" | "Completed";
+  description: string;
+  technologies: string[];
+}
+
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  year: string;
+  status: "In Progress" | "Completed";
+  details: string;
 }
 
 export interface ProjectItem {
@@ -51,25 +73,18 @@ export interface ProjectItem {
   featured?: boolean;
 }
 
-export interface EducationItem {
-  degree: string;
-  institution: string;
-  year: string;
-  status: "In Progress" | "Completed";
-  details: string;
-}
-
 export const personal = {
   name: "Preetabh",
   fullName: "Preetabh Awasthi",
-  role: "Full Stack Web Developer",
-  tagline: "I build fast, responsive, and scalable web applications.",
-  bio: "Hi, I'm Preetabh Awasthi. I specialize in both front-end and back-end development, building clean, responsive, and user-friendly web apps.",
+  role: "Full Stack & Mobile App Developer",
+  tagline: "Building high-performance web and mobile apps with React Native, .NET, PHP, and modern full-stack frameworks.",
+  bio: "Hi, I'm Preetabh Awasthi. Currently working at DigiEpitome as a Full Stack & App Developer. Specializing in responsive frontends, cross-platform mobile apps using React Native, and high-performance backends with .NET, PHP, and Node.js.",
   email: "preetabh.work@gmail.com",
   phone: "+91 9452900378",
   rawPhone: "+919452900378",
   whatsapp: "https://wa.me/919452900378",
   location: "Lucknow, Uttar Pradesh, India",
+  currentCompany: "DigiEpitome",
   availability: "Available for Hire",
   github: "https://github.com/",
   githubUsername: "preetabh-awasthi",
@@ -84,28 +99,67 @@ export const personal = {
 
 export const verifiedMetrics = [
   {
-    label: "Projects Completed",
-    value: "12+",
-    subtext: "Production & side projects",
+    label: "Current Company",
+    value: "DigiEpitome",
+    subtext: "Aug 2026 – Present",
     color: "#ff5722",
   },
   {
-    label: "Technologies",
-    value: "16+",
-    subtext: "Languages & frameworks",
+    label: "Experience",
+    value: "1+ Yr",
+    subtext: "Started Sep 2025",
     color: "#10b981",
   },
   {
-    label: "Experience",
-    value: "2+ Yrs",
-    subtext: "Hands-on web development",
+    label: "Core Stack",
+    value: "Web & Mobile",
+    subtext: "React Native, .NET, PHP",
     color: "#3b82f6",
   },
   {
-    label: "Happy Clients",
-    value: "100%",
-    subtext: "Positive feedback",
+    label: "Projects & Apps",
+    value: "14+",
+    subtext: "Production ready",
     color: "#a855f7",
+  },
+];
+
+export const experience: ExperienceItem[] = [
+  {
+    id: "digiepitome",
+    role: "Full Stack & App Developer",
+    company: "DigiEpitome",
+    location: "Lucknow, India",
+    period: "August 2026 – Present",
+    type: "Full-Time",
+    status: "Current",
+    description:
+      "Working on full-stack web and mobile application development. Building performant apps with React Native, designing backend APIs using .NET, PHP, and Node.js, and integrating scalable databases.",
+    technologies: ["React Native", "React", ".NET", "PHP", "Node.js", "MongoDB", "MySQL"],
+  },
+  {
+    id: "malay-infotech",
+    role: "Web Developer",
+    company: "Malay Infotech",
+    location: "Gujarat, India (Remote)",
+    period: "Jan 2026 – August 2026",
+    type: "Remote",
+    status: "Completed",
+    description:
+      "Engineered client-focused web platforms and administrative portals. Implemented robust REST APIs with PHP and Node.js, optimized database queries, and collaborated across cross-functional remote teams.",
+    technologies: ["PHP", "Laravel", "React", "JavaScript", "MySQL", "REST APIs"],
+  },
+  {
+    id: "codex-conquer",
+    role: "Web Development Intern",
+    company: "Codex-Conquer",
+    location: "United States (Remote)",
+    period: "Sep 2025 – Dec 2025",
+    type: "Internship",
+    status: "Completed",
+    description:
+      "Full stack development internship for US-based client web systems. Developed dynamic frontend components in React, integrated backend services, and gained practical experience in professional agile workflows.",
+    technologies: ["React", "JavaScript", "Node.js", "HTML5", "CSS3", "Git"],
   },
 ];
 
@@ -115,32 +169,36 @@ export const education: EducationItem[] = [
     institution: "Dr. Ram Manohar Lohia Avadh University",
     year: "2024 – 2027",
     status: "In Progress",
-    details: "Core focus on programming, data structures, databases, and web technologies.",
-  },
-  {
-    degree: "Web Development Internship",
-    institution: "Codex-Conquer",
-    year: "Jan 2026 – Apr 2026",
-    status: "Completed",
-    details: "Full stack web development intern building live client features and REST APIs.",
+    details: "Core focus on programming, software engineering, algorithms, database architectures, and web application development.",
   },
   {
     degree: "12th (Intermediate)",
-    institution: "UP Board Uttar Pradesh",
+    institution: "UP Board, Uttar Pradesh",
     year: "2022 – 2024",
     status: "Completed",
-    details: "Science and mathematics foundation.",
+    details: "Science and Mathematics foundation with focus on analytical problem solving.",
   },
   {
     degree: "10th (High School)",
-    institution: "UP Board Uttar Pradesh",
+    institution: "UP Board, Uttar Pradesh",
     year: "2021 – 2022",
     status: "Completed",
-    details: "Completed secondary education.",
+    details: "Completed secondary education with strong academic foundation.",
   },
 ];
 
 export const skills: SkillItem[] = [
+  // Mobile / App Development
+  { name: "React Native", category: "mobile", level: "Advanced", icon: FaMobileAlt, color: "#61DAFB" },
+
+  // Backend
+  { name: ".NET / C#", category: "backend", level: "Proficient", icon: SiDotnet, color: "#512BD4" },
+  { name: "PHP", category: "backend", level: "Advanced", icon: FaPhp, color: "#777BB4" },
+  { name: "Laravel", category: "backend", level: "Proficient", icon: SiLaravel, color: "#FF2D20" },
+  { name: "Node.js", category: "backend", level: "Advanced", icon: FaNodeJs, color: "#339933" },
+  { name: "Express.js", category: "backend", level: "Advanced", icon: SiExpress, color: "#F8FAFC" },
+  { name: "Socket.IO", category: "backend", level: "Proficient", icon: SiSocketdotio, color: "#ffffff" },
+
   // Frontend
   { name: "React.js", category: "frontend", level: "Advanced", icon: FaReact, color: "#61DAFB" },
   { name: "Next.js", category: "frontend", level: "Proficient", icon: SiNextdotjs, color: "#ffffff" },
@@ -148,13 +206,6 @@ export const skills: SkillItem[] = [
   { name: "TypeScript", category: "frontend", level: "Proficient", icon: SiTypescript, color: "#3178C6" },
   { name: "Tailwind CSS", category: "frontend", level: "Advanced", icon: SiTailwindcss, color: "#06B6D4" },
   { name: "HTML5 / CSS3", category: "frontend", level: "Advanced", icon: FaHtml5, color: "#E34F26" },
-
-  // Backend
-  { name: "Node.js", category: "backend", level: "Advanced", icon: FaNodeJs, color: "#339933" },
-  { name: "Express.js", category: "backend", level: "Advanced", icon: SiExpress, color: "#F8FAFC" },
-  { name: "PHP", category: "backend", level: "Advanced", icon: FaPhp, color: "#777BB4" },
-  { name: "Laravel", category: "backend", level: "Proficient", icon: SiLaravel, color: "#FF2D20" },
-  { name: "Socket.IO", category: "backend", level: "Proficient", icon: SiSocketdotio, color: "#ffffff" },
 
   // Database
   { name: "MongoDB", category: "database", level: "Advanced", icon: SiMongodb, color: "#47A248" },

@@ -43,6 +43,35 @@ html.dark body,
   font-family: var(--font-mono);
 }
 
+/* saurabhshukla.com Grid & Floating Code Background */
+.grid-bg {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.dark .grid-bg {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@keyframes floatCodeItem {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(8px) rotate(-3deg);
+  }
+}
+
+.floating-code-item {
+  animation: floatCodeItem var(--fc-duration, 15s) ease-in-out infinite alternate;
+  animation-delay: var(--fc-delay, 0s);
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

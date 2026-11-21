@@ -10,7 +10,7 @@ import {
   HiOutlineBriefcase,
   HiOutlineExternalLink,
 } from "react-icons/hi";
-import { personal, education, projects } from "../data/portfolio";
+import { personal, experience, education, projects } from "../data/portfolio";
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -130,20 +130,78 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 </p>
               </div>
 
+              {/* Work Experience */}
+              <div className="mt-5">
+                <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#ff5722]">
+                  <HiOutlineBriefcase size={14} />
+                  Work Experience
+                </h3>
+                <div className="mt-2 space-y-2.5">
+                  {experience.map((item) => (
+                    <div
+                      key={item.id}
+                      className="rounded-xl border border-slate-200 bg-slate-50/70 p-3.5 dark:border-white/5 dark:bg-white/[0.02]"
+                    >
+                      <div className="flex justify-between items-start text-xs">
+                        <div>
+                          <span className="font-bold text-slate-900 dark:text-white text-sm">
+                            {item.role}
+                          </span>
+                          <span className="text-[#ff5722] font-semibold ml-1.5">
+                            @ {item.company}
+                          </span>
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                            {item.location} • {item.type}
+                          </div>
+                        </div>
+                        <span className="font-mono text-xs text-[#ff5722] font-semibold shrink-0">
+                          {item.period}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                        {item.description}
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-1">
+                        {item.technologies.map((t) => (
+                          <span
+                            key={t}
+                            className="rounded bg-slate-200/70 px-1.5 py-0.5 text-[10px] font-mono text-slate-700 dark:bg-white/10 dark:text-slate-300"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               {/* Education */}
               <div className="mt-5">
                 <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#ff5722]">
                   <HiOutlineAcademicCap size={14} />
-                  Education &amp; Experience
+                  Education
                 </h3>
                 <div className="mt-2 space-y-2">
                   {education.map((item) => (
-                    <div key={item.degree} className="rounded-xl border border-slate-200 bg-slate-50/70 p-3 dark:border-white/5 dark:bg-white/[0.02]">
+                    <div
+                      key={item.degree}
+                      className="rounded-xl border border-slate-200 bg-slate-50/70 p-3 dark:border-white/5 dark:bg-white/[0.02]"
+                    >
                       <div className="flex justify-between items-center text-xs">
-                        <span className="font-bold text-slate-900 dark:text-white">{item.degree}</span>
-                        <span className="font-mono text-slate-500 dark:text-slate-400">{item.year}</span>
+                        <span className="font-bold text-slate-900 dark:text-white">
+                          {item.degree}
+                        </span>
+                        <span className="font-mono text-slate-500 dark:text-slate-400">
+                          {item.year}
+                        </span>
                       </div>
-                      <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">{item.institution}</p>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                        {item.institution}
+                      </p>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
+                        {item.details}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -152,19 +210,31 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               {/* Skills */}
               <div className="mt-5">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-[#ff5722]">
-                  Skills
+                  Skills &amp; Technologies
                 </h3>
-                <div className="mt-2 grid grid-cols-2 gap-2 text-xs text-slate-700 dark:text-slate-300">
+                <div className="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-700 dark:text-slate-300">
                   <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-2.5 dark:border-white/5 dark:bg-white/[0.02]">
-                    <span className="font-semibold text-slate-900 dark:text-white block mb-0.5">Frontend</span>
+                    <span className="font-semibold text-slate-900 dark:text-white block mb-0.5">
+                      Mobile &amp; Frontend
+                    </span>
                     <span className="font-mono text-[11px] text-slate-600 dark:text-slate-400">
-                      React, Next.js, JavaScript, TypeScript, Tailwind CSS, HTML5, CSS3
+                      React Native, React.js, Next.js, JavaScript, TypeScript, Tailwind CSS, HTML5, CSS3
                     </span>
                   </div>
                   <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-2.5 dark:border-white/5 dark:bg-white/[0.02]">
-                    <span className="font-semibold text-slate-900 dark:text-white block mb-0.5">Backend &amp; DB</span>
+                    <span className="font-semibold text-slate-900 dark:text-white block mb-0.5">
+                      Backend Systems
+                    </span>
                     <span className="font-mono text-[11px] text-slate-600 dark:text-slate-400">
-                      Node.js, Express, PHP, Laravel, MongoDB, MySQL, PostgreSQL, Prisma
+                      .NET, C#, PHP, Laravel, Node.js, Express.js, Socket.IO, REST APIs
+                    </span>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-2.5 dark:border-white/5 dark:bg-white/[0.02]">
+                    <span className="font-semibold text-slate-900 dark:text-white block mb-0.5">
+                      Databases &amp; Tools
+                    </span>
+                    <span className="font-mono text-[11px] text-slate-600 dark:text-slate-400">
+                      MongoDB, MySQL, PostgreSQL, Prisma, Git, GitHub, Docker, Vite, Vercel
                     </span>
                   </div>
                 </div>

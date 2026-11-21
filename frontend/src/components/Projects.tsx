@@ -26,15 +26,18 @@ export default function Projects() {
   return (
     <section id="projects" className="relative px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-5xl">
-        {/* Section Header */}
+        {/* Section Header (saurabhshukla.com style) */}
         <div className="mb-10 text-center">
           <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-[#ff5722]/30 bg-[#ff5722]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#ff5722]">
             <HiOutlineFolder size={13} />
-            Portfolio
+            Shipped Software
           </span>
           <h2 className="font-display text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
-            Featured Projects
+            Products That Scale
           </h2>
+          <p className="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+            Production applications, mobile tools, and full-stack platforms engineered with clean architecture and modern frameworks.
+          </p>
 
           {/* Filter Tabs */}
           <div className="mt-6 flex flex-wrap justify-center gap-1.5 rounded-2xl border border-slate-200 bg-white/90 shadow-sm p-1.5 backdrop-blur-xl dark:border-white/10 dark:bg-[#0d1020]/80 max-w-xs mx-auto">

@@ -7,9 +7,10 @@ import {
   HiOutlineCheck,
   HiOutlineDocumentText,
 } from "react-icons/hi";
-import { FaGithub, FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
-import { SiReact, SiNodedotjs, SiMongodb, SiLaravel } from "react-icons/si";
+import { FaGithub, FaWhatsapp, FaPhoneAlt, FaMobileAlt, FaPhp } from "react-icons/fa";
+import { SiReact, SiNodedotjs, SiMongodb, SiLaravel, SiDotnet } from "react-icons/si";
 import toast from "react-hot-toast";
+import StrokeText from "./StrokeText";
 import { personal, verifiedMetrics } from "../data/portfolio";
 
 interface HeroProps {
@@ -46,26 +47,57 @@ export default function Hero({ onOpenResume }: HeroProps) {
           {/* Status Badge */}
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Available for Hire</span>
+            <span>Available for Opportunities • Full-Time &amp; Projects</span>
           </div>
 
-          {/* Heading */}
-          <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
-            Hi, I&apos;m{" "}
-            <span className="bg-gradient-to-r from-[#ff8a65] via-[#ff5722] to-[#e64a19] bg-clip-text text-transparent">
-              {personal.fullName}
-            </span>
-          </h1>
+          {/* Heading with React Bits StrokeText Animation */}
+          <div className="font-display">
+            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl mb-2">
+              Hi, I&apos;m
+            </h1>
+            <div className="w-full max-w-[540px]">
+              <StrokeText
+                text="Preetabh Awasthi"
+                strokeColor="#ff5722"
+                fillColor="#ff5722"
+                strokeWidth={2}
+                fontSize={56}
+                fontWeight={800}
+                fontFamily="var(--font-display, sans-serif)"
+                letterSpacing={-1.5}
+                drawDuration={1.3}
+                fillDelay={0.18}
+                stagger={0.04}
+                wipeFrom="left"
+                trigger="mount"
+                hoverRedraw={true}
+                className="stroke-text--left"
+              />
+            </div>
+          </div>
 
           {/* Subtitle */}
-          <div className="mt-3 flex items-center gap-2 text-lg font-bold text-slate-800 dark:text-slate-200 sm:text-xl">
-            <HiOutlineTerminal className="text-[#ff5722]" size={22} />
-            <span>{personal.role}</span>
+          <div className="mt-3 flex items-center gap-2 text-base sm:text-lg font-bold text-slate-800 dark:text-slate-200">
+            <HiOutlineTerminal className="text-[#ff5722] shrink-0" size={20} />
+            <span>Full Stack &amp; Mobile App Developer</span>
           </div>
 
-          {/* Simple Direct Tagline */}
-          <p className="mt-4 max-w-lg text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
-            {personal.tagline} Focused on clean code, seamless user experience, and robust backend systems.
+          {/* Tech Line */}
+          <div className="mt-1 flex flex-wrap gap-1.5 font-mono text-xs text-[#ff5722] dark:text-[#ff8a65]">
+            <span>React Native</span>
+            <span>•</span>
+            <span>.NET</span>
+            <span>•</span>
+            <span>PHP / Laravel</span>
+            <span>•</span>
+            <span>React</span>
+            <span>•</span>
+            <span>Node.js</span>
+          </div>
+
+          {/* Tagline inspired by saurabhshukla.com */}
+          <p className="mt-3 max-w-lg text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            Designing and developing scalable web applications and mobile apps. Specializing in cross-platform mobile apps with React Native, high-performance backend systems with .NET &amp; PHP, and modern full-stack web platforms.
           </p>
 
           {/* Action CTAs */}
@@ -76,7 +108,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
               onClick={() => scrollTo("projects")}
               className="flex items-center gap-2 rounded-xl bg-[#ff5722] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#ff5722]/30 transition-all hover:bg-[#ff7043]"
             >
-              <span>View Projects</span>
+              <span>Explore Projects</span>
               <HiOutlineArrowRight size={15} />
             </motion.button>
 
@@ -87,7 +119,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
               className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-xs font-bold text-slate-700 shadow-sm transition-colors hover:border-[#ff5722]/40 hover:text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-white"
             >
               <HiOutlineMail size={15} />
-              <span>Contact Me</span>
+              <span>Get in Touch</span>
             </motion.button>
 
             <motion.button
@@ -179,22 +211,22 @@ export default function Hero({ onOpenResume }: HeroProps) {
                 </div>
                 <div>
                   <span className="text-slate-500 dark:text-slate-400">role:</span>{" "}
-                  <span className="text-amber-700 dark:text-amber-300">&quot;Full Stack Web Developer&quot;</span>,
+                  <span className="text-amber-700 dark:text-amber-300">&quot;Full Stack &amp; App Developer&quot;</span>,
+                </div>
+                <div>
+                  <span className="text-slate-500 dark:text-slate-400">currentCompany:</span>{" "}
+                  <span className="text-emerald-600 dark:text-emerald-400 font-semibold">&quot;DigiEpitome&quot;</span>,
                 </div>
                 <div>
                   <span className="text-slate-500 dark:text-slate-400">location:</span>{" "}
                   <span className="text-amber-700 dark:text-amber-300">&quot;Lucknow, India&quot;</span>,
                 </div>
                 <div>
-                  <span className="text-slate-500 dark:text-slate-400">education:</span>{" "}
-                  <span className="text-amber-700 dark:text-amber-300">&quot;BCA (2024-2027)&quot;</span>,
-                </div>
-                <div>
                   <span className="text-slate-500 dark:text-slate-400">stack:</span> [
-                  <span className="text-cyan-700 dark:text-cyan-300">&quot;React&quot;</span>,{" "}
-                  <span className="text-emerald-700 dark:text-emerald-300">&quot;Node&quot;</span>,{" "}
-                  <span className="text-purple-700 dark:text-purple-300">&quot;Laravel&quot;</span>,{" "}
-                  <span className="text-emerald-700 dark:text-emerald-400">&quot;MongoDB&quot;</span>],
+                  <span className="text-cyan-700 dark:text-cyan-300">&quot;React Native&quot;</span>,{" "}
+                  <span className="text-purple-700 dark:text-purple-300">&quot;.NET&quot;</span>,{" "}
+                  <span className="text-blue-700 dark:text-blue-300">&quot;PHP&quot;</span>,{" "}
+                  <span className="text-emerald-700 dark:text-emerald-300">&quot;React&quot;</span>],
                 </div>
                 <div>
                   <span className="text-slate-500 dark:text-slate-400">status:</span>{" "}
@@ -207,16 +239,19 @@ export default function Hero({ onOpenResume }: HeroProps) {
             {/* Quick Tech Badges */}
             <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-slate-200 dark:border-white/5 pt-3">
               <span className="flex items-center gap-1 rounded-md bg-[#61DAFB]/15 px-2 py-0.5 text-[11px] font-semibold text-[#0284c7] dark:text-[#61DAFB]">
+                <FaMobileAlt size={11} /> React Native
+              </span>
+              <span className="flex items-center gap-1 rounded-md bg-[#512BD4]/15 px-2 py-0.5 text-[11px] font-semibold text-[#512BD4] dark:text-[#a78bfa]">
+                <SiDotnet size={12} /> .NET
+              </span>
+              <span className="flex items-center gap-1 rounded-md bg-[#777BB4]/15 px-2 py-0.5 text-[11px] font-semibold text-[#4f46e5] dark:text-[#777BB4]">
+                <FaPhp size={12} /> PHP
+              </span>
+              <span className="flex items-center gap-1 rounded-md bg-[#61DAFB]/15 px-2 py-0.5 text-[11px] font-semibold text-[#0284c7] dark:text-[#61DAFB]">
                 <SiReact size={12} /> React
               </span>
               <span className="flex items-center gap-1 rounded-md bg-[#339933]/15 px-2 py-0.5 text-[11px] font-semibold text-[#15803d] dark:text-[#339933]">
                 <SiNodedotjs size={12} /> Node.js
-              </span>
-              <span className="flex items-center gap-1 rounded-md bg-[#FF2D20]/15 px-2 py-0.5 text-[11px] font-semibold text-[#b91c1c] dark:text-[#FF2D20]">
-                <SiLaravel size={12} /> Laravel
-              </span>
-              <span className="flex items-center gap-1 rounded-md bg-[#47A248]/15 px-2 py-0.5 text-[11px] font-semibold text-[#166534] dark:text-[#47A248]">
-                <SiMongodb size={12} /> MongoDB
               </span>
             </div>
           </div>

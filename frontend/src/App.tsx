@@ -9,9 +9,11 @@ import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import ResumeModal from "./components/ResumeModal";
 import FadeContent from "./components/FadeContent";
+import PageLoader from "./components/PageLoader";
 
 export default function App() {
   const [resumeOpen, setResumeOpen] = useState(false);
@@ -41,7 +43,10 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <div className="relative min-h-screen overflow-x-hidden font-sans text-slate-100 selection:bg-[#ff5722]/30 selection:text-white light:text-slate-900">
+      {/* Cinematic Page Reload & Initial Mount Animation */}
+      <PageLoader />
+
+      <div className="relative min-h-screen overflow-x-hidden font-sans text-slate-900 selection:bg-[#ff5722]/30 selection:text-white dark:text-slate-100">
         {/* Dynamic Swarm Background FX */}
         <BackgroundFX />
 
@@ -68,6 +73,10 @@ export default function App() {
 
           <FadeContent trigger="scroll" duration={0.9} ease="power2.out" threshold={0.12}>
             <Education />
+          </FadeContent>
+
+          <FadeContent trigger="scroll" duration={0.9} ease="power2.out" threshold={0.12}>
+            <FAQ />
           </FadeContent>
 
           <FadeContent trigger="scroll" duration={0.9} ease="power2.out" threshold={0.12}>

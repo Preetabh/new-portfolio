@@ -27,7 +27,7 @@ export default function PageLoader() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#070913] text-white"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#f8fafc] text-slate-900 dark:bg-[#070913] dark:text-white transition-colors duration-300"
         >
           {/* Glowing Aura */}
           <div className="absolute h-64 w-64 rounded-full bg-[#ff5722]/20 blur-[90px] animate-pulse" />
@@ -50,16 +50,16 @@ export default function PageLoader() {
             transition={{ duration: 0.4, delay: 0.15 }}
             className="text-center mb-6"
           >
-            <h1 className="font-display text-xl font-bold tracking-tight text-white">
+            <h1 className="font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white">
               Preetabh Awasthi
             </h1>
-            <p className="text-xs font-mono text-[#ff8a65] mt-1">
+            <p className="text-xs font-mono text-[#ff5722] dark:text-[#ff8a65] mt-1">
               Full Stack Web Developer
             </p>
           </motion.div>
 
           {/* Progress Bar Container */}
-          <div className="w-48 overflow-hidden rounded-full bg-white/10 p-0.5">
+          <div className="w-48 overflow-hidden rounded-full bg-slate-200 dark:bg-white/10 p-0.5">
             <motion.div
               className="h-1 rounded-full bg-gradient-to-r from-[#ff5722] to-[#ff8a65] shadow-[0_0_10px_#ff5722]"
               animate={{ width: `${progress}%` }}
