@@ -34,9 +34,10 @@ export default function Hero({ onOpenResume }: HeroProps) {
   return (
     <section
       id="home"
-      className="relative flex min-h-[88vh] items-center px-4 pt-28 pb-16 sm:px-6 lg:px-8"
+      className="relative flex min-h-[88vh] flex-col justify-center px-4 pt-28 pb-16 sm:px-6 lg:px-8"
     >
-      <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-12">
+      <div className="mx-auto w-full max-w-5xl">
+        <div className="grid items-center gap-10 lg:grid-cols-12">
         {/* Left Intro Column */}
         <motion.div
           className="lg:col-span-7"
@@ -256,19 +257,20 @@ export default function Hero({ onOpenResume }: HeroProps) {
             </div>
           </div>
         </motion.div>
-      </div>
+        </div>
 
-      {/* Metrics Row */}
-      <div className="mx-auto max-w-5xl mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 border-t border-slate-200 dark:border-white/10 pt-6">
-        {verifiedMetrics.map((m) => (
-          <div key={m.label} className="text-center sm:text-left">
-            <span className="font-display text-2xl font-black" style={{ color: m.color }}>
-              {m.value}
-            </span>
-            <p className="text-xs font-semibold text-slate-800 dark:text-slate-200">{m.label}</p>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400">{m.subtext}</p>
-          </div>
-        ))}
+        {/* Metrics Row (Underneath Intro & Code Card across full width) */}
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 border-t border-slate-200/80 dark:border-white/10 pt-6">
+          {verifiedMetrics.map((m) => (
+            <div key={m.label} className="text-center sm:text-left">
+              <span className="font-display text-2xl font-black" style={{ color: m.color }}>
+                {m.value}
+              </span>
+              <p className="text-xs font-semibold text-slate-800 dark:text-slate-200">{m.label}</p>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">{m.subtext}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

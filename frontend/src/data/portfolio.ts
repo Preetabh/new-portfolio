@@ -86,10 +86,10 @@ export const personal = {
   location: "Lucknow, Uttar Pradesh, India",
   currentCompany: "DigiEpitome",
   availability: "Available for Hire",
-  github: "https://github.com/",
-  githubUsername: "preetabh-awasthi",
+  github: "https://github.com/preetabh",
+  githubUsername: "preetabh",
   socials: {
-    github: "https://github.com/",
+    github: "https://github.com/preetabh",
     linkedin: "https://linkedin.com/",
     whatsapp: "https://wa.me/919452900378",
     email: "mailto:preetabh.work@gmail.com",
@@ -236,7 +236,7 @@ export const projects: ProjectItem[] = [
     ],
     tags: ["React", "Node.js", "Express", "MongoDB", "Razorpay"],
     liveUrl: "https://biggest-shop-mart.onrender.com",
-    githubUrl: "https://github.com/",
+    githubUrl: "https://github.com/preetabh",
     featured: true,
   },
   {
@@ -252,7 +252,7 @@ export const projects: ProjectItem[] = [
     ],
     tags: ["Next.js", "Express", "AI", "Cloudinary"],
     liveUrl: "https://code-review-2-xfed.onrender.com",
-    githubUrl: "https://github.com/",
+    githubUrl: "https://github.com/preetabh",
     featured: true,
   },
   {
@@ -267,8 +267,8 @@ export const projects: ProjectItem[] = [
       "Modern dark UI built with Tailwind CSS",
     ],
     tags: ["Next.js", "Socket.IO", "Node.js", "MongoDB"],
-    liveUrl: "https://github.com/",
-    githubUrl: "https://github.com/",
+    liveUrl: "https://github.com/preetabh",
+    githubUrl: "https://github.com/preetabh",
     featured: true,
   },
   {
@@ -284,7 +284,7 @@ export const projects: ProjectItem[] = [
     ],
     tags: ["React", "Node.js", "MongoDB", "Gemini AI"],
     liveUrl: "https://codementor-ai-mern.vercel.app/",
-    githubUrl: "https://github.com/",
+    githubUrl: "https://github.com/preetabh",
     featured: false,
   },
   {
@@ -300,7 +300,7 @@ export const projects: ProjectItem[] = [
     ],
     tags: ["React", "Vite", "Tailwind CSS"],
     liveUrl: "https://spaceweb-ten.vercel.app",
-    githubUrl: "https://github.com/",
+    githubUrl: "https://github.com/preetabh",
     featured: false,
   },
   {
@@ -315,8 +315,8 @@ export const projects: ProjectItem[] = [
       "Click count tracking and instant redirection",
     ],
     tags: ["React", "Node.js", "Express", "MongoDB"],
-    liveUrl: "https://github.com/",
-    githubUrl: "https://github.com/",
+    liveUrl: "https://github.com/preetabh",
+    githubUrl: "https://github.com/preetabh",
     featured: false,
   },
 ];

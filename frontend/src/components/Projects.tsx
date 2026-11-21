@@ -128,7 +128,7 @@ export default function Projects() {
                   )}
 
                   <a
-                    href={project.githubUrl || "https://github.com/"}
+                    href={project.githubUrl || "https://github.com/preetabh"}
                     target="_blank"
                     rel="noreferrer"
                     title="GitHub"
